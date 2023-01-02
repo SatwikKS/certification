@@ -1,0 +1,2 @@
+spring.application.name=PROFESSION
+server.port=7891
