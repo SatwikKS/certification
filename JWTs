@@ -45,5 +45,38 @@ csrf.disable()
 .signwith(Keys.hmacShaKeyFor("secureeeeeeeeezzdcnsdjcuygy".getbytes()))
 .compact();
 
+
 response.addHeader("Authorization", "Bearer "+token)
+
+
+Create new filter:
+
+Create Class required extends OnceperRequestFilter
+override doFilterInternalMethod;
+
+extract token from header for next requests from client
+
+String Authorizationheader = request.getHeader("Authorization");
+
+in if statement authheader is null or not starts with bearer then simply return
+else use string replace method to separate bearer from token
+
+String token = request.getHeader("Authorization")
+
+String token_Secret=cursorrrr nnjhfmnhbds
+
+ Jws<Claims> claimsJWS =  jwts.parser()
+.setsignngKey(Keys.hmacshakeyFor("token_Secret".getBytes()))
+.parseJwsClaims(token)
+
+Calims body = claimsJWS.getbody()
+String username = body.getSubject();
+
+
+
+
+
+
+
+
 
