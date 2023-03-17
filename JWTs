@@ -1,0 +1,40 @@
+Refer the URL: https://github.com/jwtk/jjwt
+
+Steps in JWTS
+
+1) extend the class with UsernamePasswordAuthenticationFilter
+2) override method attemptAuthentication
+3)
+
+
+UserDetails userDetails =new ObjectMapper().readValue(request.getInputStream(), UserDetails.class);
+private final AuthenticationManager authManager;
+
+add it to constructor
+
+Authentication authentication = null;
+authManager.autheticate(authentication);
+
+Authentication is an interface implements many classes
+one is UsernamePasswordAuthenticationToken
+
+Authentication authentication = new UsernamePasswordAuthenticationToken(
+userDetails.getUserName(),
+userDetails.getUserName();
+);
+
+Authentication authenticate = authManager.autheticate(authentication);
+
+2) Override successfullAuthentication Method 
+create token here :
+
+String token = Jwts.builder()
+.setSubject(authResult.getName())
+.claim("authorities", authResult.getAuthorities())
+.issuedAt(new Date())
+.setExpiratin(pick sql date.valueof(localdate().now().plusweeks(2)))
+.signwith(Keys.hmacShaKeyFor("secureeeeeeeeezzdcnsdjcuygy".getbytes()))
+.compact();
+
+response.addHeader("Authorization", "Bearer "+token)
+
