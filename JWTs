@@ -33,6 +33,15 @@ String token = Jwts.builder()
 .claim("authorities", authResult.getAuthorities())
 .issuedAt(new Date())
 .setExpiratin(pick sql date.valueof(localdate().now().plusweeks(2)))
+
+
+
+In Configure method of Http methods extended by websecurityconfigurerAdapter
+http. 
+csrf.disable()
+.sessionmanagement().SessionCreationPolicy(SessionCreationPolicy.STATELESS)
+.and()
+.addFilter(filterfile created for JWT send authenticationManager as parameter)
 .signwith(Keys.hmacShaKeyFor("secureeeeeeeeezzdcnsdjcuygy".getbytes()))
 .compact();
 
